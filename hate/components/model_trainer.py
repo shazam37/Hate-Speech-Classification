@@ -14,15 +14,17 @@ from hate.ml.model import ModelArchitecture
 
 
 class ModelTrainer:
-    def __init__(self, data_transformation_artifacts: DataTransformationArtifacts,
-                 model_trainer_config: ModelTrainerConfig):
+    def __init__(self, model_trainer_config: ModelTrainerConfig, 
+                 data_transformation_artifacts: DataTransformationArtifacts):
         
-        self.data_transformation_artifacts = data_transformation_artifacts
+        # self.model_trainer_config = model_trainer_config
         self.model_trainer_config = model_trainer_config
+        self.data_transformation_artifacts = data_transformation_artifacts
+
 
     def splitting_data(self, csv_path):
         try:
-            logging.info("Entered the data splitting mode")
+            logging.info("Entered the data splitting mode") 
             logging.info("Reading the data")
             df = pd.read_csv(csv_path, index_col=False)
             logging.info("Splitting the data into X and y")
@@ -53,7 +55,7 @@ class ModelTrainer:
         except Exception as e:
             raise CustomException(e, sys) from e   
 
-    def initiate_model_trainer(self,) -> ModelTrainerArtifacts:
+    def initiate_model_trainer(self) -> ModelTrainerArtifacts:
         logging.info("Entered initiate model trainer mode")
 
         """
@@ -65,6 +67,8 @@ class ModelTrainer:
         """    
 
         try:
+            logging.info("Entered the initiate model trainer function")
+            print(f"The data transformation artifact lies here: {self.data_transformation_artifacts.transformed_data_path}")
             x_train, x_test, y_train, y_test = self.splitting_data(csv_path=self.data_transformation_artifacts.transformed_data_path)
             model_architecture = ModelArchitecture()
 

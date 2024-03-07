@@ -92,8 +92,11 @@ class DataTransformation:
             os.makedirs(self.data_transformation_config.DATA_TRANSFORMATION_ARTIFACTS_DIR, exist_ok=True)
             df.to_csv(self.data_transformation_config.TRANSFORMED_FILE_PATH, index=False, header=True)
 
+            # data_transformation_artifact = DataTransformationArtifacts(
+            #     transformed_data_path = self.data_transformation_config.TRANSFORMED_FILE_PATH
+            # )
             data_transformation_artifact = DataTransformationArtifacts(
-                transformed_data_path = self.data_transformation_config.TRANSFORMED_FILE_PATH
+                self.data_transformation_config.TRANSFORMED_FILE_PATH
             )
             logging.info('returning the DataTransformationArtifacts')
             return data_transformation_artifact

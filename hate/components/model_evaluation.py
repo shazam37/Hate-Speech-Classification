@@ -15,11 +15,11 @@ from hate.entity.artifact_entity import ModelEvaluationArtifacts, ModelTrainerAr
 
 
 class ModelEvaluation:
-    def __init__(self, model_evaulation_config: ModelEvaluationConfig,
+    def __init__(self, model_evaluation_config: ModelEvaluationConfig,
                  model_trainer_artifacts: ModelTrainerArtifacts, 
                  data_transformation_artifacts: DataTransformationArtifacts):
         
-        self.model_evaluation_config = model_evaulation_config
+        self.model_evaluation_config = model_evaluation_config
         self.model_trainer_artifacts = model_trainer_artifacts
         self.data_transformation_atifacts = data_transformation_artifacts
         self.gcloud = GCloudSync()
