@@ -51,23 +51,23 @@ Consider the name of the different components in a literal sense. Input pipe/sta
 
 * Input Gate (i):
 
-The input gate determines how much of the new input data should be let through to update the cell state. It takes the current input and the previous hidden state as input and produces a value between 0 and 1 for each number in the cell state. A value of 0 means "let nothing through", while a value of 1 means "let everything through".
+The input gate determines how much of the new input data should be let through to update the memory state. It takes the current input and the previous hidden state as input and produces a value between 0 and 1 for each number in the memory state. A value of 0 means "let nothing through", while a value of 1 means "let everything through".
 
 * Forget Gate (f):
 
-The forget gate determines what information from the cell state should be thrown away or kept. It takes the current input and the previous hidden state as input and produces a value between 0 and 1 for each number in the cell state. A value of 0 means "completely forget this", while a value of 1 means "keep this completely".
+The forget gate determines what information from the memory state should be thrown away or kept. It takes the current input and the previous hidden state as input and produces a value between 0 and 1 for each number in the memory state. A value of 0 means "completely forget this", while a value of 1 means "keep this completely".
 
-* Cell State (C):
+* Memory State (C):
 
-The cell state is like a conveyor belt that runs straight down the entire chain, with only some minor linear interactions. It’s very easy for information to just flow along it unchanged. The input gate and the forget gate help in deciding how to update the cell state.
+The memory state is like a conveyor belt that runs straight down the entire chain, with only some minor linear interactions. It’s very easy for information to just flow along it unchanged. The input gate and the forget gate help in deciding how to update the memory state.
 
 * Output Gate (o):
 
-The output gate determines what parts of the cell state should be output as the hidden state. It takes the current input and the previous hidden state as input and produces a value between 0 and 1 for each number in the cell state. The hidden state, which is also the output of the LSTM unit, is a filtered version of the cell state.
+The output gate determines what parts of the memory state should be output as the hidden state. It takes the current input and the previous hidden state as input and produces a value between 0 and 1 for each number in the memory state. The hidden state, which is also the output of the LSTM unit, is a filtered version of the memory state.
 
 * Hidden State (h):
 
-The hidden state is the output of the LSTM unit. It's a filtered version of the cell state that focuses on the parts that the output gate decided to output.
+The hidden state is the output of the LSTM unit. It's a filtered version of the memory state that focuses on the parts that the output gate decided to output.
 
 It's a little tricky to get at first but we can appreciate the magnificence of this algorithm. It has a memory!! 
 
@@ -75,7 +75,7 @@ Just like any neural network architecture, we specify the number of LSTM layers 
 
 For my case, I chose to go with 1 layer and a droput rate of 0.2. I then compiled the model with a binary-crossentropy loss, RMSProp optimizer, and accuracy as an evaluation metrics. With jsut 5 training epochs with a batch size of 128 and a validation split of 0.2, I obtained a validation accuracy value of 96%. 
 
-The trained model was wrapped up as an application using FastAPI and is ready to be deployed. The application follows proper MLOPs principle with CI/CD deployment being carried out with CricleCI.
+The trained model was wrapped up as an application using FastAPI and is ready to be deployed. The application follows proper MLOPs principle with CI/CD deployment being carried out with CricleCI. You can install the required dependencies and run the app.py for launching the application. 
 
 The app interface allows you to train the model yourself (You can tune the hyperparameters in the config file):
 
