@@ -38,9 +38,11 @@ Once we are done with the cleaning, we move onto feature engineering. Any Machin
 
 Tensorflow's keras library provides an embedding module where we need to specify the length of vector we desire for storing the text info. More the amount of text, more should be the vector-size so that it can encode all the words. 
 
-We encode the binary labels with one hot encoding. After performing all the given steps, our data is now read to be trained on a deep learning model. 
+We encode the binary labels with one hot encoding. 
 
-Recurrent Neural Networks (RNN) are used for training on a sequential information. It is the basic building block behind all the state of the art NLP models. RNN just like any neural network takes in a vectorized text input and predicts the next text output. But the special thing is that the output is then fed again along with the next input to the model, that way, the model is also trained on the previous information. This method of processing information accounts for the order of sequence which is the whole crux of any text information. 
+After performing all the given steps, the data is now ready to be trained on a machine learning model. 
+
+Recurrent Neural Networks (RNN) are a class of Deep Learning Algorithms used for training on a sequential information. It is the basic building block behind all the state of the art NLP models. RNN just like any neural network takes in a vectorized text input and predicts the next text output. But the special thing is that the output is then fed again along with the next input to the model, that way, the model is also trained on the previous information. This method of processing information accounts for the order of sequence which is the whole crux of any text information. 
 
 ![rnn](https://github.com/shazam37/Hate-Speech-Classification/assets/119686545/4c40ebbd-0527-44bf-a89a-e6d9ed260015)
 
