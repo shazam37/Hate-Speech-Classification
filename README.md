@@ -42,7 +42,7 @@ We encode the binary labels with one hot encoding.
 
 After performing all the given steps, the data is now ready to be trained on a machine learning model. 
 
-Recurrent Neural Networks (RNN) are a class of Deep Learning Algorithms used for training on a sequential information. It is the basic building block behind all the state of the art NLP models. RNN just like any neural network takes in a vectorized text input and predicts the next text output. But the special thing is that the output is then fed again along with the next input to the model, that way, the model is also trained on the previous information. This method of processing information accounts for the order of sequence which is the whole crux of any text information. 
+Recurrent Neural Networks (RNN) are a class of Deep Learning Algorithms used for training on a sequential information. It is the basic building block behind all the state of the art NLP models. RNN like any neural network takes in a vectorized text input but instead of predicting a label or a value predicts the the next text in the sequence.The special thing here is that the output is then fed again along with the next input to the model. That way, the model is also trained on the previous information. This method of processing information accounts for the order of sequence which is the whole crux of any text information. 
 
 ![rnn](https://github.com/shazam37/Hate-Speech-Classification/assets/119686545/4c40ebbd-0527-44bf-a89a-e6d9ed260015)
 
@@ -56,7 +56,7 @@ The LSTM architecture looks like a bunch of pipes going here and there each havi
 
 ![lstm](https://github.com/shazam37/Hate-Speech-Classification/assets/119686545/226562b9-3cb9-4a90-bfc9-abd4e29734d6)
 
-Consider the name of the different components in a literal sense. Input pipe/state takes in the input while the memory pipe/state carries the past information. The ones in between are the gates that decides what will happen to the information. All the components can be summarised as:
+Consider the name of the different components in a literal sense. Input pipe/state takes in the input while the memory pipe/state carries the past information and gets updated at each step. The ones in between are the gates that decides what to do with the current information. All the components can be summarised as:
 
 * Input Gate (i):
 
@@ -78,26 +78,26 @@ The output gate determines what parts of the memory state should be output as th
 
 The hidden state is the output of the LSTM unit. It's a filtered version of the memory state that focuses on the parts that the output gate decided to output.
 
-It's a little tricky to get at first but we can appreciate the magnificence of this algorithm. It has a memory!! 
+The architecture is a little tricky to get at first but we can appreciate the magnificence of this algorithm. It has a memory!! 
 
-Just like any neural network architecture, we specify the number of LSTM layers we want, the amount of dropout regularization we want (to prevent overfitting), etc. We finally add a Dense layer at the end with a sigmoid activation to generate a binary output.  
+Just like any neural network architecture, here also we specify the number of LSTM layers we want, the amount of dropout regularization we want (to prevent overfitting), etc. We finally add a Dense layer at the end with a sigmoid activation to generate a binary output.  
 
-For my case, I chose to go with 1 layer and a droput rate of 0.2. I then compiled the model with a binary-crossentropy loss, RMSProp optimizer, and accuracy as an evaluation metrics. With jsut 5 training epochs with a batch size of 128 and a validation split of 0.2, I obtained a validation accuracy value of 96%. 
+For my case, I chose to go with 1 layer and a droput rate of 0.2. I then compiled the model with a binary-crossentropy loss, RMSProp optimizer, and accuracy as an evaluation metric. With just 5 training epochs, a batch size of 128, and a validation split of 0.2, I obtained a validation accuracy value of around 95%. 
 
-The trained model was wrapped up as an application using FastAPI and is ready to be deployed. The application follows proper MLOPs principle with CI/CD deployment being carried out with CricleCI. You can install the required dependencies and run the app.py for launching the application. 
+The trained model was wrapped up as an application using **FastAPI** and is ready to be deployed. The application follows proper **MLOPs** principle with CI/CD deployment being carried out with **CricleCI**. You can install the required dependencies and run the app.py for launching the application. 
 
 The app interface allows you to train the model yourself (You can tune the hyperparameters in the config file):
 
 ![Screenshot from 2024-03-14 16-22-36](https://github.com/shazam37/Hate-Speech-Classification/assets/119686545/5e991858-710c-4f11-aee0-f3a6fd6cc94b)
 
 And there is a prediciton interface where we need to specify the text for prediction. Let's say we give a text like:
-"rt urkindofbrand dawg rt you ever fuck a bitch and she start to cri you be confus as shit". Its clearly a abusive statement. See what the model has to say about it:
+"rt urkindofbrand dawg rt you ever fuck a bitch and she start to cri you be confus as shit". Its clearly a abusive statement written poorly. See what the model has to say about it:
 
 ![Screenshot from 2024-03-14 16-26-41](https://github.com/shazam37/Hate-Speech-Classification/assets/119686545/ede9864d-62ac-4b45-a7aa-dfbc3efce183)
 
-Voila! It classfied correctly! We now have a speech buster in the house B-)
+Voila! It classfied correctly! We now have a speech buster ready in the house B-) 
 
-The given template can be extended for classifying any text into any category given we have a properly labelled data for it. Now you know the power of such NLP algorithms running day and night to make this world a better place. Happy classifying!
+The given template can be extended for classifying any text into any category given we have a properly labelled data for it. Now you know the power of such NLP algorithms running day and night to make this world a better place and protect people from bad influence. Happy classifying!
 
 
 
