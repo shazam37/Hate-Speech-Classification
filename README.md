@@ -13,6 +13,7 @@ For this task, I obtained the Twitter's hate-speech classification data from Kag
 Next we clean the text data. Text-cleansing process in NLP usually follows a certain set of protocols. We utilise a python library called **NLTK** for this task. It has all the built-in text cleaning modules available. The standard cleaning procedure follows:
 
 * Basic text-preprocessing
+  
       * stop-word removal i.e. removing very common words, usually conjunctions like 'the','and','or'...
   
       * stemming/lemmatization for converting the words into their root form (Ex. running -> run)
@@ -22,6 +23,7 @@ Next we clean the text data. Text-cleansing process in NLP usually follows a cer
       * lower casing (converting the words into lower case) 
 
 * Advance text-preprocessing
+  
       * Part-of-Speech tagging i.e. assigining the grammatical categories to words to maintain the context of sentence
   
       * Parsing which is again the process of breaking down a text into related words and identifying the sentence's grammatical structure.
