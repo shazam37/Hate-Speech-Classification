@@ -14,13 +14,18 @@ Next we clean the text data. Text-cleansing process in NLP usually follows a cer
 
 * Basic text-preprocessing
       * stop-word removal i.e. removing very common words, usually conjunctions like 'the','and','or'...
+  
       * stemming/lemmatization for converting the words into their root form (Ex. running -> run)
+  
       * punctuation and symbol removal (:,;,.,#,@...)
+  
       * lower casing (converting the words into lower case) 
 
 * Advance text-preprocessing
       * Part-of-Speech tagging i.e. assigining the grammatical categories to words to maintain the context of sentence
+  
       * Parsing which is again the process of breaking down a text into related words and identifying the sentence's grammatical structure.
+  
       * Correference resolution. Consider a sentence "Charlie is a dog and Doug is his owner." Here Charlie is a male dog as we can understand from the context.
 
 Once we are done with the cleaning, we move onto feature engineering. Any Machine Learning model wont understand a text directly and only understands it as a vector. This step is called tokenization. Thus we convert a text into vector. There are different ways to perform text vectorization: bag-of-words (BoW), TFIDF (Term-Frequency-Inverse-Document-Frequency), One-hot Encoding, word2vec, and embeddings. I chose to go with embedding vectorization. 
